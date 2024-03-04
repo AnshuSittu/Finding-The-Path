@@ -27,6 +27,8 @@ const Body = () => {
 
     // Optional chaining ?
 
+    console.log(json);
+
     setListOfRestaurant(
       json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants
     );
@@ -35,12 +37,6 @@ const Body = () => {
     );
   };
 
-  //Conditional Rendering
-  // if(ListOfRestaurant.length === 0){
-  //   return <Shimmer/>
-  // }
-
-  // Use Of Terniory oprator :
 
   return ListOfRestaurant.length === 0 ? (
     <Shimmer />
@@ -78,7 +74,7 @@ const Body = () => {
             // filter logic here
 
             const filteredList = ListOfRestaurant.filter(
-               (res) => res.info.avgRating > 4
+               (res) => res.info.avgRating > 4.2
             );
             setfilteredRestaurant(filteredList);
           }}
