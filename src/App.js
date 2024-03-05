@@ -7,12 +7,16 @@ import Contact from "./components/Contact";
 import Error from "./components/Error";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
-
 const AppLayout = () => {
   return (
     <div className="app">
       <Header />
+      {/* if path = /  */}
       <Body />
+      {/* if path = /about  */}
+      <About />
+      {/* if path = / contact */}
+      <Contact />
     </div>
   );
 };
@@ -21,15 +25,21 @@ const appRouter = createBrowserRouter([
   {
     path: "/",
     element: <AppLayout />,
-    errorElement:<Error/>,
-  },
-  {
-    path: "/about",
-    element: <About />,
-  },
-  {
-    path: "/contact",
-    element: <Contact />,
+    children: [
+      {
+        path:"/",
+        element:<body/>,
+      },
+      {
+        path: "/about",
+        element: <About />,
+      },
+      {
+        path: "/contact",
+        element: <Contact />,
+      },
+    ],
+    errorElement: <Error />,
   },
 ]);
 
