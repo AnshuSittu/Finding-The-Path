@@ -1,22 +1,27 @@
 import { LOGO_URL } from "../../utils/constants";
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 const Header = () => {
   const [btnNameReact, setbtnNameReact] = useState("Login");
 
-
   return (
     <div className="header">
       <div className="logo-container">
-        <img className="logo" src={LOGO_URL} />
+      <Link to="/"> <img className="logo" src={LOGO_URL} /></Link> 
       </div>
       <div className="nav-items">
         <ul>
-          <li>Home</li>
-          <li>About Us</li>
-          <li>Contact Us</li>
-          <li>Cart</li>
-          {/* here we have put condtion if btn is login then Logout and vice versa */}
+          <li>
+            <Link to="/" className="nav">Home</Link>
+          </li>
+          <li>
+            <Link to="/about" className="nav">About Us</Link>
+          </li>
+          <li>
+            <Link to="/contact" className="nav">Contact Us</Link>
+          </li>
+          <li><Link to="/cart" className="nav">Cart</Link></li>
           <button
             className="login"
             onClick={() => {
