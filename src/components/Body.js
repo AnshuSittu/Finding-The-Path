@@ -3,10 +3,6 @@ import { useEffect, useState } from "react";
 import Shimmer from "./Shimmer";
 
 
-// Never create useState out side of the component. it will through an error 
-/* const [searchText, setSearchText] = useState(""); */
-
-
 
 const Body = () => {
   //Local state Variable
