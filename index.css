@@ -28,9 +28,11 @@
 }
 
 .res-card {
+  font-family:serif;
   margin: 5px;
   width: 200px;
-
+  height: 400px;
+  text-decoration: none;
   border-radius: 10px;
   padding: 5px;
   box-shadow: rgba(136, 165, 191, 0.48) 6px 2px 16px 0px,
@@ -126,4 +128,20 @@
 .nav{
   text-decoration: none;
   color: inherit;
+}
+.menu-list{
+  font-size: 20px;
+  font-family: Arial, Helvetica, sans-serif;
+  list-style-type: none;
+  padding: 40px;
+  margin: 20px;
+  height: auto;
+  background-color: #EEEDED;
+  border-radius: 10px;
+  box-shadow: rgba(136, 165, 191, 0.48) 6px 2px 16px 0px,
+  rgba(255, 255, 255, 0.8) -6px -2px 16px 0px;
+}
+.menu-list:hover{
+  cursor: pointer;
+  border: 8px soild red;
 }

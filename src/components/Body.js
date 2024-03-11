@@ -1,8 +1,7 @@
 import RestaurantCard from "./RestaurantCard";
 import { useEffect, useState } from "react";
 import Shimmer from "./Shimmer";
-
-
+import { Link } from "react-router-dom";
 
 const Body = () => {
   //Local state Variable
@@ -25,11 +24,11 @@ const Body = () => {
 
     const json = await data.json();
 
-   // console.log(json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
+    // console.log(json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
 
     // Optional chaining ?
 
-   // console.log(json);
+    // console.log(json);
 
     setListOfRestaurant(
       json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants
@@ -38,7 +37,6 @@ const Body = () => {
       json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants
     );
   };
-
 
   return ListOfRestaurant.length === 0 ? (
     <Shimmer />
@@ -54,14 +52,15 @@ const Body = () => {
               setSearchText(e.target.value);
             }}
           />
-          <button className="btn-search"
+          <button
+            className="btn-search"
             onClick={() => {
               // filter the restraunt cards and update the UI
               // searchText
               console.log(searchText);
 
               const filteredRestaurant = ListOfRestaurant.filter((res) =>
-              res.info.name.toLowerCase().includes(searchText.toLowerCase())
+                res.info.name.toLowerCase().includes(searchText.toLowerCase())
               );
 
               setfilteredRestaurant(filteredRestaurant);
@@ -76,7 +75,7 @@ const Body = () => {
             // filter logic here
 
             const filteredList = ListOfRestaurant.filter(
-               (res) => res.info.avgRating > 4.2
+              (res) => res.info.avgRating > 4.2
             );
             setfilteredRestaurant(filteredList);
           }}
@@ -86,7 +85,12 @@ const Body = () => {
       </div>
       <div className="res-container">
         {filteredRestaurant.map((restaurant) => (
-          <RestaurantCard key={restaurant.info.id} resData={restaurant} />
+          <Link 
+            key={restaurant.info.id}
+            to={"/restaurant/" + restaurant.info.id} style={{ textDecoration: 'none', color: 'black' }}
+          >
+            <RestaurantCard resData={restaurant} />
+          </Link>
         ))}
       </div>
     </div>
